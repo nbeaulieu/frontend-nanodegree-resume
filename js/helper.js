@@ -161,26 +161,39 @@ function initializeMap() {
       title: name
     });
 
-  var contentString = '<div id="content">'+
+    var replacementString = "%location%";
+
+    var contentString = '<div id="content">'+
       '<div id="siteNotice">'+
       '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">%location</h1>'+
+      '<h1 id="firstHeading" class="firstHeading">"%location%"</h1>'+
       '<div id="bodyContent">'+
-      '<p><b>%location</b>, %mapDescription</p>'+
+      '<p><b>"%location%"</b>, ...' +
+      '</p>'+
+      '<p></p>'+
       '</div>'+
       '</div>';
+      
       
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
-    });
+     //content: name
+     });
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
       console.log(marker);
+      // Center the map on the selected marker.
+      map.setCenter(marker.getPosition());
+
+      var windowString = contentString.replace(new RegExp(replacementString, 'g'), name);
+      // Set the info window content.
+      infoWindow.setContent(windowString);
+
+      // Open the window.
       infoWindow.open(map, marker);
     });
 
