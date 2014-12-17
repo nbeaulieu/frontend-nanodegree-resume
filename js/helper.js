@@ -84,8 +84,9 @@ function logClicks(x,y) {
   console.log('x location: ' + x + '; y location: ' + y);
 }
 
+// Logs the clicks on the resume page.
 $(document).click(function(loc) {
-  // your code goes here!
+  logClicks(loc.pageX, loc.pageY);
 });
 
 
@@ -141,6 +142,34 @@ function initializeMap() {
     return locations;
   }
 
+  var infoBox = new InfoBox({
+    content: document.getElementById("map-info-box"),
+    disableAutoPan: false,
+    maxWidth: 150,
+    pixelOffset: new google.maps.Size(-140, 0),
+    zIndex: null,
+    boxStyle: {
+       background: "url('http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/examples/tipbox.gif') no-repeat",
+       opacity: 0.75,
+       width: "280px"
+    },
+    closeBoxMargin: "12px 4px 2px 2px",
+    closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+    infoBoxClearance: new google.maps.Size(1, 1)
+  });
+    
+    //google.maps.event.addListener(marker, 'click', function() {
+    //    infobox.open(map, this);
+    //    map.panTo(loc);
+    //});
+    
+  // infoWindows are the little helper windows that open when you click
+  // or hover over a pin on a map. They usually contain more information
+  // about a location.
+  // NMB:  Keep a single infoWindow element to prevent more than one window
+  // from being displayed at a time.  As a window closes, a new one will open
+  var infoWindow = new google.maps.InfoWindow({});
+
   /*
   createMapMarker(placeData) reads Google Places search results to create map pins.
   placeData is the object returned from search results containing information
@@ -162,39 +191,43 @@ function initializeMap() {
     });
 
     var replacementString = "%location%";
-
-    var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">"%location%"</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>"%location%"</b>, ...' +
-      '</p>'+
-      '<p></p>'+
-      '</div>'+
+    var contentString =
+      '<div id="content">'+
+        '<div id="mapInfoWindow">'+
+          '<h3>"%location%"</h3>'+
+          '<div">'+
+            '<p></p>'+
+          '</div>' +
+        '</div>' +
       '</div>';
-      
       
     // infoWindows are the little helper windows that open when you click
     // or hover over a pin on a map. They usually contain more information
     // about a location.
-    var infoWindow = new google.maps.InfoWindow({
+    // console.log("createMapMarker, infoWindow: ");
+    //var infoWindow = new google.maps.InfoWindow({
      //content: name
-     });
+    // });
 
-    // hmmmm, I wonder what this is about...
+    // Invoked when the user clicks on a map marker. This function closes any previously
+    // opened boxes, sets the display content for the new marker, centers the map, and opens
+    // the display box.
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
-      console.log(marker);
+
+      infoWindow.close();
+      infoBox.close();
+
       // Center the map on the selected marker.
       map.setCenter(marker.getPosition());
 
       var windowString = contentString.replace(new RegExp(replacementString, 'g'), name);
       // Set the info window content.
       infoWindow.setContent(windowString);
+      infoBox.setContent(windowString);
 
       // Open the window.
-      infoWindow.open(map, marker);
+      //infoWindow.open(map, marker);
+      infoBox.open(map, marker);
     });
 
     // this is where the pin actually gets added to the map.

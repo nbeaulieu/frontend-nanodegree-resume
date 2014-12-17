@@ -11,8 +11,9 @@ var bio = {
         "mobile": "775.303.6384",
         "email": "nbeaulieu@me.com",
         "github": "nbeaulieu",
+        "location": "Reno, Nevada",
         "twitter": "",
-        "location": "Reno, Nevada"
+        "blog": ""
     }
 }
 
@@ -259,7 +260,7 @@ work.display = function() {
 var projects = {
     "projects": [
         {
-            "title": "Project Portfolio",
+            "title": "Udacity Project Portfolio",
             "dates": "2014",
             "description": "Personal portfolio developed during the Udacity Front End Developer course.",
             "images": ["images/197x148.gif", "images/197x148.gif"]
@@ -268,6 +269,12 @@ var projects = {
             "title": "Udacity Mug Mock-Up",
             "dates": "2014",
             "description": "Project 1 developed during the Udacity Front End Developer course.",
+            "images": ["images/197x148.gif", "images/197x148.gif"]
+        },
+        {
+            "title": "Udacity Interactive Resume",
+            "dates": "2014",
+            "description": "Project 2 developed during the Udacity Front End Developer course.",
             "images": ["images/197x148.gif", "images/197x148.gif"]
         }
     ]
@@ -360,6 +367,24 @@ var education = {
             "school": "Udacity",
             "dates": "2014",
             "url": "https://www.udacity.com/course/ud804"
+        },
+        {
+            "title": "Intro to jQuery",
+            "school": "Udacity",
+            "dates": "2014",
+            "url": "https://www.udacity.com/course/ud245"
+        },
+        {
+            "title": "How to Use Git and Github",
+            "school": "Udacity",
+            "dates": "2014",
+            "url": "https://www.udacity.com/course/ud775"
+        },
+        {
+            "title": "HTML5 Canvas",
+            "school": "Udacity",
+            "dates": "2014",
+            "url": "https://www.udacity.com/course/ud292"
         }
     ]
 }
@@ -446,12 +471,6 @@ $("#mapDiv").append(googleMap);
 // Define general utility functions for the project.
 //
 
-// Logs the clicks on the resume page.
-$(document).click(function(loc) {
-  // your code goes here
-  logClicks(loc.pageX, loc.pageY);
-});
-
 // 
 function locationizer(work_object) {
 
@@ -469,8 +488,6 @@ function locationizer(work_object) {
     }
     return locations;
 }
-
-//console.log(locationizer(work));
 
 // Internationalizes the capitalization of the name.
 function inName (nameIn) {
@@ -507,3 +524,4 @@ function inName (nameIn) {
     // Construct the name and return it.
     return firstName + " " + lastName;
 }
+
