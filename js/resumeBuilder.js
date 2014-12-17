@@ -337,7 +337,7 @@ var education = {
                 "Computer Science"
             ],
             "dates": "1989-1993",
-            "url": "https://www.sandiego.edu"
+            "url": "http://www.sandiego.edu"
         },
         {
             "name": "Iowa State University",
@@ -347,7 +347,7 @@ var education = {
                 "Human Computer Interaction"
             ],
             "dates": "December 2011 - Present",
-            "url": "https://www.iastate.edu"
+            "url": "http://www.iastate.edu"
         }
     ],
     "onlineCourses": [
@@ -355,37 +355,15 @@ var education = {
             "title": "Front End Developer Nanodegree",
             "school": "Udacity",
             "dates": "2014-2015",
-            "url": "https://www.udacity.com/course/nd001"
-        },
-        {
-            "title": "Intro to HTML and CSS",
-            "school": "Udacity",
-            "dates": "2014",
-            "url": "https://www.udacity.com/course/ud304"
-        },
-        {
-            "title": "JavaScript Basics",
-            "school": "Udacity",
-            "dates": "2014",
-            "url": "https://www.udacity.com/course/ud804"
-        },
-        {
-            "title": "Intro to jQuery",
-            "school": "Udacity",
-            "dates": "2014",
-            "url": "https://www.udacity.com/course/ud245"
-        },
-        {
-            "title": "How to Use Git and Github",
-            "school": "Udacity",
-            "dates": "2014",
-            "url": "https://www.udacity.com/course/ud775"
-        },
-        {
-            "title": "HTML5 Canvas",
-            "school": "Udacity",
-            "dates": "2014",
-            "url": "https://www.udacity.com/course/ud292"
+            "url": "http://www.udacity.com/course/nd001",
+            "schoolUrl": "http://www.udacity.com",
+            "supportingCourses": [
+                { "title": "Intro to HTML and CSS", "url": "http://www.udacity.com/course/ud304" },
+                { "title": "JavaScript Basics", "url": "http://www.udacity.com/course/ud804" },
+                { "title": "Intro to jQuery", "url": "http://www.udacity.com/course/ud245" },
+                { "title": "How to Use Git and Github", "url": "http://www.udacity.com/course/ud775" },
+                { "title": "HTML5 Canvas", "url": "http://www.udacity.com/course/ud292" }
+            ]
         }
     ]
 }
@@ -402,11 +380,13 @@ education.display = function() {
         for (var school in education.schools) {
 
             // Replace the data element.
-            // The school and the degree are added together.
-            var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
+            // The school url, school anem and the degree are added together.
+            var formattedSchoolURL = HTMLschoolNameLink.replace("%data%", education.schools[school].url);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
             var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+
             // Append the element.
-            $(".education-entry:last").append(formattedSchool + formattedDegree);
+            $(".education-entry:last").append(formattedSchoolURL + formattedSchoolName + formattedDegree);
 
             // Add the location.
             var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
@@ -432,24 +412,34 @@ onlineEd.display = function() {
     
     // Display the online coursework now.
     $("#onlineEd").append(HTMLonlineEdStart)
-    
+
     if (education.onlineCourses != null && education.onlineCourses.length > 0) {
 
         // Loop through the list and add each included skill to the skills section.
         for (var onlineCourse in education.onlineCourses) {
 
             // Replace the data element.
-            // The course title and the school are added together.
+            var formattedCourseLink = HTMLonlineTitleLink.replace("%data%", education.onlineCourses[onlineCourse].url);
             var formattedCourse = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
             var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
-            // Append the element.
-            $(".online-ed-entry:last").append(formattedCourse + formattedSchool);
+            // The titles and their links are added at the same time.
+            $(".online-ed-entry:last").append(formattedCourseLink + formattedCourse + formattedSchool);
 
+            // Add the dates to the display.
             var formattedDates = HTMLschoolDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
             $(".online-ed-entry:last").append(formattedDates);
 
-            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
-            $(".online-ed-entry:last").append(formattedURL);
+            var formatedHeader = HMTLSupportingCourses;
+            $(".online-ed-entry:last").append(formatedHeader);
+            console.log(formatedHeader);
+            
+            // Include supporting course work.
+            for (course in education.onlineCourses[onlineCourse].supportingCourses) {
+                var formattedCourse = HMTLSupportingCourse.replace("%data%", education.onlineCourses[onlineCourse].supportingCourses[course].title);
+                $(".online-ed-entry:last").append(formattedCourse);
+            }
+            //var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
+            //$(".online-ed-entry:last").append(formattedURL);
         }
 
     }
