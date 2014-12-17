@@ -3,16 +3,18 @@
 //
 var bio = {
     "name" : "Nicole Beaulieu",
-    "role" : "Computer Scientist",
+    "role" : "Software Engineer and Architect",
     "image" : "images/fry.jpg",
-    "welcomeMessage" : "Geek Greetings",
-    "skills": [ "software architecture", "technical research", "technical leadership", "game development guru"],
+    "welcomeMessage" : "Rock star computer geek fascinated with art of making awesome games with a compelling hook. " + 
+        "Crazy about designing and implementing robust, maintainable and beautiful code.  Passionate about tackling any possible learning curve." +
+        "Innovative and created with an extensive patent portfolio.",
+    "skills": [ "software architecture", "technical research", "technical leadership", "game development guru", "patent machine"],
     "contacts": {
         "mobile": "775.303.6384",
         "email": "nbeaulieu@me.com",
         "github": "nbeaulieu",
         "location": "Reno, Nevada",
-        "twitter": "",
+        "twitter": "@nmbeaulieu",
         "blog": ""
     }
 }
@@ -54,8 +56,6 @@ bio.displaySkills = function() {
         for (var skill in bio.skills) {
             // Replace the data element.
             var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-            // Uncomment for debug information.
-            //console.log("resumeBuilder.displaySkills:  " +  bio.skills[skill]);
 
             // Append the skill to the skills section.
             $("#skills").append(formattedSkill)
@@ -103,35 +103,50 @@ bio.displayContact = function() {
 
     if (bio !== null && bio.contacts !== null) {
 
-        // Replace the data element.
-        var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-        // Add the element to the document.
-        $("#topContacts").append(formattedMobile);
+        // Parse the bio contact information. Only show the elements that have valid entries.
+
+        if (bio.contacts.email != null && bio.contacts.email.length > 0) {
+            // Replace the data element.
+            var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+            // Add the element to the document.
+            $("#topContacts").append(formattedEmail);
+        }
+        
+        if (bio.contacts.github != null && bio.contacts.github.length > 0) {
+            // Replace the data element.
+            var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+            // Add the element to the document.
+            $("#topContacts").append(formattedGithub);
+        }
+
+        if (bio.contacts.twitter != null && bio.contacts.twitter.length > 0) {
+            // Replace the data element.
+            var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+            // Add the element to the document.
+            $("#topContacts").append(formattedTwitter);
+        }
 
         // Replace the data element.
-        var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-        // Add the element to the document.
-        $("#topContacts").append(formattedEmail);
+        if (bio.contacts.blog != null && bio.contacts.blog.length > 0) {
+            var formattedBlog = HTMLblog.replace("%data%", bio.contacts.blog);
+            // Add the element to the document.
+            $("#topContacts").append(formattedBlog);
+        }
 
-        // Replace the data element.
-        var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-        // Add the element to the document.
-        $("#topContacts").append(formattedGithub);
+        if (bio.contacts.mobile != null && bio.contacts.mobile.length > 0) {
+            // Replace the data element.
+            var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+            // Add the element to the document.
+            $("#topContacts").append(formattedMobile);
+        }
 
-        // Replace the data element.
-        var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-        // Add the element to the document.
-        $("#topContacts").append(formattedLocation);
+        if (bio.contacts.location != null && bio.contacts.location.length > 0) {
+            // Replace the data element.
+            var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+            // Add the element to the document.
+            $("#topContacts").append(formattedLocation);
+        }
 
-        // Replace the data element.
-        var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-        // Add the element to the document.
-        $("#topContacts").append(formattedTwitter);
-
-        // Replace the data element.
-        var formattedBlog = HTMLblog.replace("%data%", bio.contacts.twitter);
-        // Add the element to the document.
-        $("#topContacts").append(formattedBlog);
     }
     else {
       console.log("resumeBuilder.bio.display:  No bio defined.");
@@ -206,7 +221,7 @@ var work =  {
             "title": "Firmware Engineer",
             "location": "Reno, Nevada",
             "dates": "May 1993 - September 1996",
-            "description": "Game developer and firmware engineer. Technologies:  Intel 80960-based custom OS, Object Oriented C."
+            "description": "Game developer and firmware engineer. Technologies:  Intel 80960-based custom OS, Object Oriented C (yes, I said that)."
         }
     ]
 }
