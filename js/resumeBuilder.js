@@ -431,7 +431,7 @@ education.display = function() {
 onlineEd.display = function() {
     
     // Display the online coursework now.
-    $("#onlineed").append(HTMLonlineEdStart)
+    $("#onlineEd").append(HTMLonlineEdStart)
     
     if (education.onlineCourses != null && education.onlineCourses.length > 0) {
 
