@@ -5,9 +5,9 @@ var bio = {
     "name" : "Nicole Beaulieu",
     "role" : "Software Engineer and Architect",
     "image" : "images/fry.jpg",
-    "welcomeMessage" : "Rock star computer geek fascinated with art of making awesome games with a compelling hook. " + 
-        "Crazy about designing and implementing robust, maintainable and beautiful code.  Passionate about tackling any possible learning curve." +
-        "Innovative and created with an extensive patent portfolio.",
+    "welcomeMessage" : "Rock star computer geek fascinated with the art of making awesome games with a compelling hook. " + 
+        "Crazy about designing and implementing robust, maintainable, and beautiful code.  Passionate about tackling any possible learning curve. " +
+        "Innovative and creative with an extensive patent portfolio.",
     "skills": [ "software architecture", "technical research", "technical leadership", "game development guru", "patent machine"],
     "contacts": {
         "mobile": "775.303.6384",
@@ -99,8 +99,14 @@ bio.displayWelcome = function() {
 }
 
 // Parses and formats the biography contact information.
-bio.displayContact = function() {
+bio.displayContact = function(displayInHeader) {
 
+    var contactsClass = "#topContacts";
+    
+    // If the request is not for the header, update the class with the assumption that it's the footer.
+    if (displayInHeader !== true) {
+        contactsClass = "#footerContacts";
+    }
     if (bio !== null && bio.contacts !== null) {
 
         // Parse the bio contact information. Only show the elements that have valid entries.
@@ -109,42 +115,42 @@ bio.displayContact = function() {
             // Replace the data element.
             var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
             // Add the element to the document.
-            $("#topContacts").append(formattedEmail);
+            $(contactsClass).append(formattedEmail);
         }
         
         if (bio.contacts.github != null && bio.contacts.github.length > 0) {
             // Replace the data element.
             var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
             // Add the element to the document.
-            $("#topContacts").append(formattedGithub);
+            $(contactsClass).append(formattedGithub);
         }
 
         if (bio.contacts.twitter != null && bio.contacts.twitter.length > 0) {
             // Replace the data element.
             var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
             // Add the element to the document.
-            $("#topContacts").append(formattedTwitter);
+            $(contactsClass).append(formattedTwitter);
         }
 
         // Replace the data element.
         if (bio.contacts.blog != null && bio.contacts.blog.length > 0) {
             var formattedBlog = HTMLblog.replace("%data%", bio.contacts.blog);
             // Add the element to the document.
-            $("#topContacts").append(formattedBlog);
+            $(contactsClass).append(formattedBlog);
         }
 
         if (bio.contacts.mobile != null && bio.contacts.mobile.length > 0) {
             // Replace the data element.
             var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
             // Add the element to the document.
-            $("#topContacts").append(formattedMobile);
+            $(contactsClass).append(formattedMobile);
         }
 
         if (bio.contacts.location != null && bio.contacts.location.length > 0) {
             // Replace the data element.
             var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
             // Add the element to the document.
-            $("#topContacts").append(formattedLocation);
+            $(contactsClass).append(formattedLocation);
         }
 
     }
@@ -156,10 +162,11 @@ bio.displayContact = function() {
 // Draw the bio info.
 bio.display = function () {
     bio.displayHeader();
-    bio.displayContact();
+    bio.displayContact(true); // Display contacts in the header.
     bio.displayImage();
     bio.displayWelcome();
     bio.displaySkills();
+    bio.displayContact(false); // Display contacts in the footer.
 }
 
 //
