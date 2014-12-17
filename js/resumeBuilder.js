@@ -309,6 +309,7 @@ projects.display = function () {
             // Replace the data element.
             if (projects.projects[project].images.length > 0) {
 
+                // Add each image to the list.
                 for (image in projects.projects[project].images) {
 
                     var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
@@ -401,53 +402,54 @@ education.display = function() {
         for (var school in education.schools) {
 
             // Replace the data element.
+            // The school and the degree are added together.
             var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
-            // Append the element.
-            $(".education-entry").append(formattedSchool);
-
-            var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            $(".education-entry").append(formattedLocation);
-
-            var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-            $(".education-entry").append(formattedDates);
-
             var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-            $(".education-entry").append(formattedDegree);
+            // Append the element.
+            $(".education-entry:last").append(formattedSchool + formattedDegree);
 
+            // Add the location.
+            var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+            $(".education-entry:last").append(formattedLocation);
+
+            // Add the dates of attendance.
+            var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+            $(".education-entry:last").append(formattedDates);
+
+            // Include all majors.
             for (major in education.schools[school].majors) {
                 var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]);
-                $(".education-entry").append(formattedMajor);
+                $(".education-entry:last").append(formattedMajor);
             }
         }
     }
     else {
       console.log("resumeBuilder.education.display:  No schools defined.");
     }
+}
 
-    // Display the online coursework now.        
+onlineEd.display = function() {
+    
+    // Display the online coursework now.
+    $("#onlineed").append(HTMLonlineEdStart)
+    
     if (education.onlineCourses != null && education.onlineCourses.length > 0) {
-
-        // Add the element to the document.
-        $(".education-entry:last").append(HTMLonlineClasses);
 
         // Loop through the list and add each included skill to the skills section.
         for (var onlineCourse in education.onlineCourses) {
 
             // Replace the data element.
+            // The course title and the school are added together.
             var formattedCourse = HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title);
-            // Append the element.
-            $(".education-entry").append(formattedCourse);
-
-            // Replace the data element.
             var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school);
             // Append the element.
-            $(".education-entry").append(formattedSchool);
+            $(".online-ed-entry:last").append(formattedCourse + formattedSchool);
 
             var formattedDates = HTMLschoolDates.replace("%data%", education.onlineCourses[onlineCourse].dates);
-            $(".education-entry").append(formattedDates);
+            $(".online-ed-entry:last").append(formattedDates);
 
             var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url);
-            $(".education-entry").append(formattedURL);
+            $(".online-ed-entry:last").append(formattedURL);
         }
 
     }
@@ -461,6 +463,7 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+onlineEd.display();
 
 //
 // Get out the map.
