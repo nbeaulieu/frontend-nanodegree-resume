@@ -19,7 +19,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta charset="utf-8">
 
   <!-- Tells the browser what the title of this page should be. -->
-  <title>Resume</title>
+  <title>Resume - Nicole Beaulieu</title>
 
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet" type="text/css">
@@ -47,8 +47,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   Google Map to your resume!
   -->
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
-  <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
-
 
   <meta name="viewport" content="width=device-width">
 </head>
@@ -64,24 +62,20 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       <ul id="topContacts" class='flex-box'></ul>
     </div>
     <div style='clear: both;'></div>
-    <div id="workExperience" class='gray'>
+    <div id="workExperience" class='gray scroll-div'>
       <h2>Work Experience</h2>
     </div>
-    <div id="projects">
+    <div id="projects" class='scroll-div'>
       <h2>Projects</h2>
     </div>
-    <div id="education" class='gray'>
+    <div id="education" class='gray scroll-div'>
       <h2>Education</h2>
-    </div>
-    <div id="onlineEd" class='gray'>
-      <h2>Online Coursework</h2>
     </div>
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
-      <div id="map-info-box"></div>
     </div>
     <div id="letsConnect" class='dark-gray'>
-      <!--h2 class='orange center-text'>Let's Connect</h2-->
+      <h2 class='orange center-text'>Let's Connect</h2>
         <ul id="footerContacts" class="flex-box">
       </ul>
     </div>
@@ -119,30 +113,26 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
 
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.backgroundColor = "black";
+      document.getElementById('topContacts').style.display = 'none';
     }
     if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.backgroundColor = "black";
+      document.getElementById('header').style.display = 'none';
     }
     if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.backgroundColor = "black";
+      document.getElementById('workExperience').style.display = 'none';
     }
     if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.backgroundColor = "black";
+      document.getElementById('projects').style.display = 'none';
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.backgroundColor = "black";
-    }
-    if(document.getElementsByClassName('online-ed-entry').length === 0) {
-      document.getElementById('onlineEd').style.backgroundColor = "black";
+      document.getElementById('education').style.display = 'none';
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('letsConnect').style.backgroundColor = "black";
+      document.getElementById('letsConnect').style.display = 'none';
     }
     if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.backgroundColor = "black";
+      document.getElementById('mapDiv').style.display = 'none';
     }
-
   </script>
 </body>
 </html>
