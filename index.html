@@ -21,6 +21,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <!-- Tells the browser what the title of this page should be. -->
   <title>Resume - Nicole Beaulieu</title>
 
+  <!-- Load the fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,400italic' rel='stylesheet' type='text/css'>
+
   <!-- Load the page styles. -->
   <link href="css/style.css" rel="stylesheet" type="text/css">
 
@@ -50,7 +53,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
   <meta name="viewport" content="width=device-width">
 </head>
-<body unresolved>
+<!-- body unresolved -->
+<body>
   <div id="main">
     <!--
     Everything from here to the <script> tag below is the skeleton of your
@@ -58,24 +62,29 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     resume below. You can pretty easily figure out what each section will
     display by looking at the id or at what's written between the <h2> tags.
     -->
-    <div id="header" class="center-content clearfix">
+    <div id="header" class="center-content clearfix dark-gray">
       <ul id="topContacts" class='flex-box'></ul>
     </div>
     <div style='clear: both;'></div>
-    <div id="workExperience" class='gray scroll-div'>
-      <h2>Work Experience</h2>
+    <hr class="fancy-fade-orange">
+    <div id="workExperience" class='medium-gray scroll-div'>
+      <h2 class="light-gray-text">Work Experience</h2>
     </div>
-    <div id="projects" class='scroll-div'>
-      <h2>Projects</h2>
+    <hr class="fancy-fade-white">
+    <div id="projects" class='scroll-div medium-gray'>
+      <h2 class="light-gray-text">Projects</h2>
     </div>
-    <div id="education" class='gray scroll-div'>
-      <h2>Education</h2>
+    <hr class="fancy-fade-white">
+    <div id="education" class='scroll-div medium-gray'>
+      <h2 class="light-gray-text">Education</h2>
     </div>
-    <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
+    <hr class="fancy-fade-white">
+    <div class="medium-gray" id="mapDiv">
+      <h2 class="light-gray-text">Where I've Lived and Worked</h2>
     </div>
-    <div id="letsConnect" class='dark-gray'>
-      <h2 class='orange center-text'>Let's Connect</h2>
+    <hr class="fancy-fade-white">
+    <div id="letsConnect" class='dark-gray dark-gray-text'>
+      <h2 class='orange center-text'>Let's Connect</h2><hr class="fancy-fade-white">
         <ul id="footerContacts" class="flex-box">
       </ul>
     </div>

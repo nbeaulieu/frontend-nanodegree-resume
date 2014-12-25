@@ -10,7 +10,7 @@
 var work =  {
     "jobs": [
         {
-            "employer": "Bally Technolgoies",
+            "employer": "Bally Technologies",
             "title": "Principal Software Engineer",
             "location": "Reno, Nevada",
             "dates": "October 2013 - Present",
@@ -20,7 +20,7 @@ var work =  {
         {
             "employer": "Kizzang, LLC",
             "title": "Software Architect",
-            "location": "Reno, Nevada",
+            "location": "Las Vegas, Nevada",
             "dates": "April 2013 - September 2013",
             "description": "Software Architect responsible for the design and implementation of the company's n-tier scratch card lottery system.  Deployments included web and mobile.  Technologies:  ActionScript, Flash, Starling, Feathers, HTML, JSON, and PHP.",
             "url": "http://www.kizzang.com"
@@ -127,21 +127,21 @@ var projects = {
             "title": "Udacity Project Portfolio",
             "dates": "2014",
             "description": "Personal portfolio developed during the Udacity Front End Developer course.",
-            "images": ["images/197x148.gif", "images/197x148.gif"],
+            "images": ["images/CodeSnippet.02.png", "images/UnityButton.png"],
             "url": ""
         },
         {
             "title": "Udacity Mug Mock-Up",
             "dates": "2014",
             "description": "Project 1 developed during the Udacity Front End Developer course.",
-            "images": ["images/197x148.gif", "images/197x148.gif"],
+            "images": ["images/udacity-mug.png", "images/HTML5Button.png"],
             "url": ""
         },
         {
             "title": "Udacity Interactive Resume",
             "dates": "2014",
             "description": "Project 2 developed during the Udacity Front End Developer course.",
-            "images": ["images/197x148.gif", "images/197x148.gif"],
+            "images": ["images/ResumeCapture01.png", "images/ResumeCapture02.png"],
             "url": ""
         }
     ]
@@ -208,7 +208,7 @@ projects.display = function () {
 var bio = {
     "name" : "Nicole Beaulieu",
     "role" : "Software Engineer and Architect",
-    "biopic" : "images/fry.jpg",
+    "biopic" : "images/LogoColor@High.png",
     "welcomeMessage" : "Rock star computer geek fascinated with the art of making awesome games with a compelling hook. " + 
         "Crazy about designing and implementing robust, maintainable, and beautiful code.  Passionate about tackling any possible learning curve. " +
         "Innovative and creative with an extensive patent portfolio.",
@@ -364,8 +364,8 @@ bio.displaySkills = function() {
 // with the other objects.
 bio.display = function() {
     bio.displayHeader();
-    bio.displayImage();
     bio.displayContactsHeader();
+    bio.displayImage();
     bio.displayWelcome();
     bio.displaySkills();
     bio.displayContactsFooter();
@@ -433,15 +433,15 @@ education.displaySchools = function() {
             var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
 
             // Append the element.
-            $(".education-entry").append(formattedSchoolName + formattedDegree);
+            $(".education-entry:last").append(formattedSchoolName + formattedDegree);
 
             // Add the location.
             var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            $(".education-entry").append(formattedLocation);
+            $(".education-entry:last").append(formattedLocation);
 
             // Add the dates of attendance.
             var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-            $(".education-entry").append(formattedDates);
+            $(".education-entry:last").append(formattedDates);
 
             // Include all majors.
             for (major in education.schools[school].majors) {
