@@ -1,0 +1,18 @@
+Nicole Beaulieu
+Udacity Front End Developer
+December 25, 2014
+
+The following list includes the sites I referenced while developing this site for project submission:
+
+http://www.htmlgoodies.com
+http://paletton.com
+http://css-tricks.com/snippets/css/a-guide-to-flexbox
+https://developers.google.com/maps/documentation/javascript/tutorial
+http://www.w3schools.com/tags/att_a_href.asp
+http://www.w3schools.com/css/css3_2dtransforms.asp
+http://www.w3schools.com/js/js_loop_for.asp
+https://www.polymer-project.org
+http://validator.w3.org
+
+
+
